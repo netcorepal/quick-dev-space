@@ -42,9 +42,13 @@ docker run --name nacos-quick -e MODE=standalone -p 8848-8849:8848-8849 --restar
 用户名：apollo ，密码：admin ，访问地址：http://localhost:8070/
 
 1. 先在mysql数据库中创建ApolloConfigDB和ApolloPortalDB库，使用下列脚本
+1. 
 [apolloconfigdb.sql](apollo/apolloconfigdb.sql)
+
 [apolloportaldb.sql](apollo/apolloportaldb.sql)
+
 原始地址：
+
 [https://github.com/apolloconfig/apollo/blob/master/scripts/sql/apolloportaldb.sql](https://github.com/apolloconfig/apollo/blob/master/scripts/sql/apolloportaldb.sql)
 [https://github.com/apolloconfig/apollo/blob/master/scripts/sql/apolloconfigdb.sql](https://github.com/apolloconfig/apollo/blob/master/scripts/sql/apolloconfigdb.sql)
 
