@@ -22,17 +22,18 @@ docker run --name redis -p 6379:6379 --restart=always -d redis:7.0
 docker run -d --hostname my-rabbit --name rabbitmq -e RABBITMQ_DEFAULT_USER=root -e RABBITMQ_DEFAULT_PASS=root -p 4369:4369 -p 5671-5672:5671-5672 -p 15671:15671 -p 15691-15692:15691-15692 -p 15672:15672 -p 25672:25672 --restart=always rabbitmq:3-management
 ```
 ## nacos
-//安装 nacos  默认用户名 nacos 密码  nacos 访问地址：  http://localhost:8848/nacos
+默认用户名 nacos 密码  nacos 访问地址：  http://localhost:8848/nacos
+``` shell
 docker run --name nacos-quick -e MODE=standalone -p 8848-8849:8848-8849 --restart=always -d nacos/nacos-server:v2.1.0
-
+```
 ## apollo
-// 安装 apollo
+// 用户名： apollo   密码：admin   访问地址：http://localhost:8070/
+``` shell
 docker run -p 8080:8080  -e SPRING_DATASOURCE_URL="jdbc:mysql://mysql:3306/ApolloConfigDB?characterEncoding=utf8"  -e SPRING_DATASOURCE_USERNAME=root -e SPRING_DATASOURCE_PASSWORD=123456  -d -v /tmp/logs:/opt/logs --name apollo-configservice --link mysql:mysql --restart=always apolloconfig/apollo-configservice:2.0.0
 docker run -p 8090:8090  -e SPRING_DATASOURCE_URL="jdbc:mysql://mysql:3306/ApolloConfigDB?characterEncoding=utf8"  -e SPRING_DATASOURCE_USERNAME=root -e SPRING_DATASOURCE_PASSWORD=123456  -d -v /tmp/logs:/opt/logs --name apollo-adminservice --link mysql:mysql --restart=always apolloconfig/apollo-adminservice:2.0.0
 docker run -p 8070:8070  -e SPRING_DATASOURCE_URL="jdbc:mysql://mysql:3306/ApolloPortalDB?characterEncoding=utf8"  -e SPRING_DATASOURCE_USERNAME=root -e SPRING_DATASOURCE_PASSWORD=123456  -e APOLLO_PORTAL_ENVS=dev,pro  -e DEV_META=http://apollo-configservice:8080 -e PRO_META=http://apollo-configservice:8080  -d -v /tmp/logs:/opt/logs --name apollo-portal --link mysql:mysql --restart=always apolloconfig/apollo-portal:2.0.0
 ```
 //需要在数据库中创建ApolloConfigDB和ApolloPortalDB库并运行数据库初始化脚本
-
 
 https://github.com/apolloconfig/apollo/blob/master/scripts/sql/apolloportaldb.sql
 https://github.com/apolloconfig/apollo/blob/master/scripts/sql/apolloconfigdb.sql
