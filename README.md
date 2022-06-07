@@ -63,3 +63,24 @@ docker run -p 8080:8080  -e SPRING_DATASOURCE_URL="jdbc:mysql://mysql:3306/Apoll
 docker run -p 8090:8090  -e SPRING_DATASOURCE_URL="jdbc:mysql://mysql:3306/ApolloConfigDB?characterEncoding=utf8"  -e SPRING_DATASOURCE_USERNAME=root -e SPRING_DATASOURCE_PASSWORD=123456  -d -v /tmp/logs:/opt/logs --name apollo-adminservice --network dev --network-alias apollo-adminservice --restart=always apolloconfig/apollo-adminservice:2.0.0
 docker run -p 8070:8070  -e SPRING_DATASOURCE_URL="jdbc:mysql://mysql:3306/ApolloPortalDB?characterEncoding=utf8"  -e SPRING_DATASOURCE_USERNAME=root -e SPRING_DATASOURCE_PASSWORD=123456  -e APOLLO_PORTAL_ENVS=dev,pro  -e DEV_META=http://apollo-configservice:8080 -e PRO_META=http://apollo-configservice:8080  -d -v /tmp/logs:/opt/logs --name apollo-portal --network dev --network-alias apollo-portal --restart=always apolloconfig/apollo-portal:2.0.0
 ```
+
+## nexus3
+
+```shell
+# https://github.com/sonatype/docker-nexus3
+docker run -d -p 8081:8081 --name nexus --network dev --network-alias nexus  --restart=always sonatype/nexus3
+
+
+# http://localhost:8081/
+# 
+```
+
+## metabase
+
+```shell
+docker pull metabase/metabase:latest
+
+docker run --name metabase  -e MYSQL_ROOT_PASSWORD=123456 -p 3000:3000 --network dev --network-alias metabase  --restart=always -d metabase/metabase
+```
+
+
