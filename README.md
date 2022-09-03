@@ -94,3 +94,7 @@ kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboar
 kubectl proxy   # 启动proxy
 ```
 访问地址： http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/
+
+参考资料：  
+https://kubernetes.io/zh-cn/docs/tasks/access-application-cluster/web-ui-dashboard/  
+https://kuboard.cn/install/install-k8s-dashboard.html
